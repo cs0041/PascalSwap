@@ -52,7 +52,7 @@ const Swap = () => {
       <div className="flex w-full justify-center items-center mt-20 relative">
         <div className="p-2  max-w-[450px] min-w-[400px] flex flex-col justify-start items-center blue-glassmorphism ">
           <div className="flex flex-row justify-between w-full py-2 px-3 items-center mb-2">
-            <div className=" text-white font-bold">Swap</div>
+            <div className=" text-white font-bold">Swap2</div>
             <AiFillSetting
               fontSize={24}
               color="#fff"
