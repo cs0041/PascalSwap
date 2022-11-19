@@ -28,10 +28,10 @@ const App = () => {
           <div className="flex-1  pb-40 justify-center items-center">
             <Routes>
               <Route path="/" element={<Swap />} />
-              <Route path="/swap" element={<Swap />} />
-              <Route path="/stake" element={<Stake />} />
-              <Route path="/transfer" element={<Transfer />} />
-              <Route path="/faucet" element={<Faucet />} />
+              <Route path="swap" element={<Swap />} />
+              <Route path="stake" element={<Stake />} />
+              <Route path="transfer" element={<Transfer />} />
+              <Route path="faucet" element={<Faucet />} />
             </Routes>
           </div>
         </div>
