@@ -17,7 +17,7 @@ const objTitlelink = [
 
 const NavbarItem = ({title,link,currentPage, setCurrentPage,}) => {
   return (
-    <Link to={`${link}`}>
+    <Link to={`/${link}`}>
       <div
         onClick={() => setCurrentPage(link)}
         className={`mx-2  text-base font-bold   cursor-pointer  transition ease-in-out  py-2 px-4 rounded-lg hover:bg-gray-800 ${
