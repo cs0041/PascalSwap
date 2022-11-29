@@ -507,7 +507,7 @@ export const TransactionProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    // console.log('start')
+    if (!ethereum) return alert('Please install metamask')
     checkIfWalletIsConnected()
     checkNetWorkChainId()
     loadBalnce()
