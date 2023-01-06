@@ -31,7 +31,7 @@ const App = () => {
               <Route path="/transfer" element={<Transfer />} />
               <Route path="/faucet" element={<Faucet />} />
               <Route path="/" element={<Navigate to="/swap" />} />
-            
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </div>
@@ -46,5 +46,16 @@ const App = () => {
   )
 }
 
+
+const NotFound = () => {
+  return (
+    <div className="flex justify-center items-center flex-col ">
+      <h1 className="text-red-600   text-4xl font-bold">404</h1>
+      <Link className="text-white text-3xl font-bold cursor-pointer hover:text-gray-500" to="/">
+        Go back home
+      </Link>
+    </div>
+  )
+}
 
 export default App
