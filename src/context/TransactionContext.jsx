@@ -359,7 +359,22 @@ export const TransactionProvider = ({ children }) => {
       const tokenContract = getTokenContract(addressToken.tokenAddress)
 
       const wei = toWei(amount)
-      await tokenContract.approve(contractStakedAddress, wei)
+      
+
+      const address = ( await window.ethereum.request({ method: 'eth_accounts' }))[0]
+      const amountApprove =await tokenContract.allowance(address, contractStakedAddress) 
+      if (Number(toEther(amountApprove)) < Number(amount)) {
+        const transactionHashApprove = await tokenContract.approve(
+          contractStakedAddress,
+          ethers.constants.MaxUint256
+        )
+        await transactionHashApprove.wait()
+      }
+
+
+
+
+
       const transactionHash = await stakedContract.stakeEther(poolId, wei)
       setTxNotification(transactionHash.hash)
       setIsLoadingTxNavBar(true)
@@ -477,10 +492,20 @@ export const TransactionProvider = ({ children }) => {
       const routerContract = getRouterContract()
 
       const amountIn = toWei(_amountIn)
-      // const approve = await tokenContract.approve(contractRouterAddress, amountIn)
-      // const resultApprove = await approve.wait()
+      // await tokenContract.approve(contractRouterAddress, amountIn)
+      
+      const address = ( await window.ethereum.request({ method: 'eth_accounts' }))[0]
+      const amountApprove =await tokenContract.allowance(address, contractRouterAddress) 
+ 
 
-      await tokenContract.approve(contractRouterAddress, amountIn)
+      if (Number(toEther(amountApprove)) < Number(_amountIn)) {
+        const transactionHashApprove = await tokenContract.approve(
+          contractRouterAddress,
+          ethers.constants.MaxUint256
+        )
+        await transactionHashApprove.wait()
+      }
+
 
       const amountOutMin = toWei(_amountOutMin)
       const deadLine = Math.floor(Date.now() / 1000 + _deadlineMinutes * 60)
